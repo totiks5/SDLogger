@@ -1,0 +1,3 @@
+[submodule "dev_modules"]
+	path = dev_modules
+	url = https://github.com/totiks5/dev_modules.git
