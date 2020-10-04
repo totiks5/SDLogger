@@ -107,7 +107,7 @@
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="PRJ_FatFS"/>
-						<entry excluding="diskio.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="dev_modules/FatFS/source"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="dev_modules/FatFS/source"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

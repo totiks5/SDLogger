@@ -21,6 +21,7 @@
 "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
 "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
 "PRJ_FatFS/user_diskio.o"
+"dev_modules/FatFS/source/diskio.o"
 "dev_modules/FatFS/source/ff.o"
 "dev_modules/FatFS/source/ffsystem.o"
 "dev_modules/FatFS/source/ffunicode.o"
