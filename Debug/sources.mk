@@ -22,4 +22,6 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/STM32F1xx_HAL_Driver/Src \
+PRJ_FatFS \
+dev_modules/FatFS/source \
 
