@@ -35,6 +35,9 @@ extern "C" {
 
 #include "ff.h"
 #include "diskio.h"
+#include "user_diskio.h"
+
+#include "stdio.h"
 
 /* USER CODE END Includes */
 
@@ -58,6 +61,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 
+SPI_HandleTypeDef* Get_SPI_HandleTypeDef();
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
