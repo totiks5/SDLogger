@@ -75,6 +75,9 @@ static void MX_SPI1_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
+
+char    buff[] = "Hello";
+
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -106,16 +109,50 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   uint8_t data = 5;
+  HAL_TIM_Base_Start_IT( &htim2 );
+
+  FRESULT result;
+
+  FATFS FATFS_Obj;
+  FIL file;
+  UINT nRead, nWritten;
+
+	 result = f_mount(&FATFS_Obj, "0", 1);
+	 if (result != FR_OK)
+	 {
+		 uint8_t dermo = 0;
+			 //printf("Ошибка монтирования диска %d\r\n", result);
+	 }
+
+	 // создаем файл write.txt
+	 result = f_open(&file, "write.txt", FA_CREATE_ALWAYS | FA_WRITE);
+	 if (result == FR_OK)
+	 {
+		 result = f_write(&file, &buff, sizeof(buff), &nWritten);
+		 f_close(&file);
+	 }
+
+	 if(result == FR_OK){
+		 HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+	 }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_Delay(10);
-	  if( HAL_SPI_Transmit( &hspi1 , &data, 1, 1000) == HAL_OK){
-		  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-	  }
+
+//	  HAL_Delay(1);
+
+//	  if( get_time() == 0 )
+//	  {
+//		  if( HAL_SPI_Transmit( Get_SPI_HandleTypeDef() , &data, 1, 1000) == HAL_OK){
+//				  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//			  }
+//
+//		  set_delay(100);
+//	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

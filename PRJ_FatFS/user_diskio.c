@@ -22,9 +22,24 @@ void SPIxENABLE(){
 
 void FCLK_FAST(){
 
-	WRITE_REG(Get_SPI_HandleTypeDef()->Instance->CR1, SPI_BAUDRATEPRESCALER_8 & SPI_CR1_BR_Msk );
+	//HAL_SPI_DeInit( Get_SPI_HandleTypeDef() );
+
+	Get_SPI_HandleTypeDef()->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
+
+	if (HAL_SPI_Init( Get_SPI_HandleTypeDef() ) != HAL_OK)
+	{
+		Error_Handler();
+	}
 }
 
 void FCLK_SLOW(){
-	WRITE_REG(Get_SPI_HandleTypeDef()->Instance->CR1, SPI_BAUDRATEPRESCALER_256 & SPI_CR1_BR_Msk );
+	//HAL_SPI_DeInit( Get_SPI_HandleTypeDef() );
+
+	Get_SPI_HandleTypeDef()->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
+
+	if (HAL_SPI_Init( Get_SPI_HandleTypeDef() ) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
 }
