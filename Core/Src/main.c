@@ -111,6 +111,9 @@ int main(void)
   uint8_t data = 5;
   HAL_TIM_Base_Start_IT( &htim2 );
 
+
+  HAL_Delay(10);
+
   FRESULT result;
 
   FATFS FATFS_Obj;
@@ -122,6 +125,8 @@ int main(void)
 	 {
 		 uint8_t dermo = 0;
 			 //printf("Ошибка монтирования диска %d\r\n", result);
+	 }else{
+		 result = f_mount(&FATFS_Obj, "0", 1);
 	 }
 
 	 // создаем файл write.txt
@@ -143,6 +148,7 @@ int main(void)
   {
 
 //	  HAL_Delay(1);
+
 
 //	  if( get_time() == 0 )
 //	  {
