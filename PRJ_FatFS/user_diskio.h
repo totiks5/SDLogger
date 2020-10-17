@@ -17,4 +17,7 @@ void SPIxENABLE();
 void FCLK_FAST();
 void FCLK_SLOW();
 
+BYTE xchg_spi (BYTE dat	);
+void init_spi (void);
+
 #endif /* PRJ_FATFS_USER_DISKIO_H_ */

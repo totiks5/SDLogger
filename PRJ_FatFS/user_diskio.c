@@ -43,3 +43,23 @@ void FCLK_SLOW(){
 	}
 
 }
+
+/* Exchange a byte */
+
+BYTE xchg_spi (
+	BYTE dat	/* Data to send */
+)
+{
+	BYTE received_byte=0;
+	HAL_SPI_TransmitReceive(Get_SPI_HandleTypeDef(), &dat, &received_byte, 1, 50); //50
+	return received_byte;
+}
+
+/* Initialize MMC interface */
+void init_spi (void)
+{
+//	SPIxENABLE();		/* Enable SPI function */
+//	CS_HIGH();			/* Set CS# high */
+//
+//	for (Timer1 = 10; Timer1; ) ;	/* 10ms */
+}
