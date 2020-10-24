@@ -108,9 +108,13 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
-  uint8_t data = 5;
-  HAL_TIM_Base_Start_IT( &htim2 );
+  char buff2[512];
+  char name[20];
 
+  sprintf(name, "file %d.txt", 2);
+  sprintf(buff2, "%s", name);
+
+  HAL_TIM_Base_Start_IT( &htim2 );
 
   HAL_Delay(10);
 
@@ -124,22 +128,23 @@ int main(void)
 	 if (result != FR_OK)
 	 {
 		 uint8_t dermo = 0;
-			 //printf("Ошибка монтирования диска %d\r\n", result);
+			// printf("Ошибка монтирования диска %d\r\n", result);
 	 }else{
 		 result = f_mount(&FATFS_Obj, "0", 1);
 	 }
 
 	 // создаем файл write.txt
-	 result = f_open(&file, "write.txt", FA_CREATE_ALWAYS | FA_WRITE);
+	 result = f_open(&file, name, FA_CREATE_ALWAYS | FA_WRITE);
 	 if (result == FR_OK)
 	 {
-		 result = f_write(&file, &buff, sizeof(buff), &nWritten);
+		 result = f_write(&file, &buff2, sizeof(buff2), &nWritten);
 		 f_close(&file);
 	 }
 
 	 if(result == FR_OK){
 		 HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 	 }
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
